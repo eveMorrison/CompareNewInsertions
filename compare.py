@@ -2,8 +2,8 @@ from pickle import FALSE, TRUE
 from pprint import pprint
 import re
 
-strain9_file = "newLocation9.bed"
-strain160_file = "newLocation160.bed"
+strain9_file = "newLocation9q50.bed"
+strain160_file = "newLocation160q50.bed"
 newFile = None
 newInsert_file = None
 
@@ -62,7 +62,7 @@ def findRepeats(fname,arr):
 
 if newFile:
         newFile.close()
-new_filename = 'newInsertionsStrict.bed'
+new_filename = 'newInsertionsQ50Leng.bed'
 newFile = open(new_filename, "w")
 
 previousRead = ""
@@ -77,15 +77,17 @@ for entry in parse_strain160(strain160_file):
     seqLen160 = int(right_coord) - int(left_coord)
     
     for match in find_match(strain9_file, seq_ID, seqLen160):
-        if(previousRead != found160[1]):
+        #if(previousRead != found160[1]):
             found9 = match[0]
             str160 = ("\t".join(found160))
             newFile.write(str160+"\n")
             str9 = ("\t".join(found9))
             newFile.write(str9+"\n")
             previousRead = found160[1]
-        else:
-            print(previousRead)
+        #else:
+            #print(previousRead)
+    
+    
         #exists = findRepeats(new_filename,found160)
         #if(exists == 0 ):
         #    found9 = match[0]
