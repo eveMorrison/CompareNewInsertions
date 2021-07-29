@@ -2,8 +2,8 @@ from pickle import FALSE, TRUE
 from pprint import pprint
 import re
 
-strain9_file = "newLocation9q50.bed"
-strain160_file = "newLocation160q50.bed"
+strain9_file = "newInsert9dys120000.bed"
+strain160_file = "newInsert160dys120000.bed"
 newFile = None
 newInsert_file = None
 
@@ -40,10 +40,10 @@ def find_match(fname,seq_name, seq_len160):
 
             seq_len9 = int(seq_end) - int(seq_start)
 
-            #if(seq_ID == seq_name):
-            #    yield values, seq_ID
-            if(seq_ID == seq_name and seq_len160 == seq_len9):
-               yield values, seq_ID
+            if(seq_ID == seq_name):
+                yield values, seq_ID
+            #if(seq_ID == seq_name and seq_len160 == seq_len9):
+            #   yield values, seq_ID
         return(values, seq_ID)
 
 def findRepeats(fname,arr):
@@ -62,7 +62,7 @@ def findRepeats(fname,arr):
 
 if newFile:
         newFile.close()
-new_filename = 'newInsertionsQ50Leng.bed'
+new_filename = 'newInsertionsDys120000.bed'
 newFile = open(new_filename, "w")
 
 previousRead = ""
